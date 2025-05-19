@@ -24,6 +24,7 @@ public class SongEntity {
     @Id
     @Column(name = "id", nullable = false, length = 36)
     @JsonProperty("id")
+    @Setter
     private UUID id;
 
     @Setter
