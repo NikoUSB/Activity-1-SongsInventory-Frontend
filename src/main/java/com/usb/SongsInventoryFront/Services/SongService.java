@@ -1,7 +1,7 @@
-package com.usb.SongsInventory.Services;
+package com.usb.SongsInventoryFront.Services;
 
-import com.usb.SongsInventory.Entities.SongEntity;
-import com.usb.SongsInventory.Repositories.SongRepository;
+import com.usb.SongsInventoryFront.Entities.SongEntity;
+import com.usb.SongsInventoryFront.Repositories.SongRepository;
 
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;

@@ -1,7 +1,7 @@
-package com.usb.SongsInventory.Controllers;
+package com.usb.SongsInventoryFront.Controllers;
 
-import com.usb.SongsInventory.Entities.SongEntity;
-import com.usb.SongsInventory.Services.SongService;
+import com.usb.SongsInventoryFront.Entities.SongEntity;
+import com.usb.SongsInventoryFront.Services.SongService;
 
 import jakarta.validation.Valid;
 import org.springframework.data.domain.PageRequest;

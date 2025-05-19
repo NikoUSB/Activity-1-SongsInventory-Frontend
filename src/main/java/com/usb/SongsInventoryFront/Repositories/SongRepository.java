@@ -1,6 +1,6 @@
-package com.usb.SongsInventory.Repositories;
+package com.usb.SongsInventoryFront.Repositories;
 
-import com.usb.SongsInventory.Entities.SongEntity;
+import com.usb.SongsInventoryFront.Entities.SongEntity;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

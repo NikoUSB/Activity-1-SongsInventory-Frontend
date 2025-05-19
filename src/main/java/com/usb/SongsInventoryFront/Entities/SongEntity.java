@@ -1,4 +1,4 @@
-package com.usb.SongsInventory.Entities;
+package com.usb.SongsInventoryFront.Entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
