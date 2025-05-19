@@ -13,7 +13,7 @@ import java.util.*;
 
 @Controller
 @RequestMapping("/api/v1/songs")
-public class SongController {
+public class SongWebController {
 
     private final String backendUrl = "https://activity-1-songsinventory-backend-production.up.railway.app";
     private final RestTemplate restTemplate = new RestTemplate();
