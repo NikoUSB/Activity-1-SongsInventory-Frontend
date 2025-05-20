@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit song</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Edit Song</h1>
+
+<form th:action="@{/web/songs/update/{id}(id=${song.id})}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+
+    <label for="songName">Name of the song:</label>
+    <input type="text" id="songName" th:field="*{song.songName}" required minlength="3" maxlength="100"/>
+    <br/>
+
+    <label for="songArtist">Name of the artist:</label>
+    <input type="text" id="songArtist" th:field="*{song.songArtist}" required minlength="3" maxlength="100"/>
+    <br/>
+
+    <label for="songAlbum">Name of the album:</label>
+    <input type="text" id="songAlbum" th:field="*{song.songAlbum}" required minlength="3" maxlength="100"/>
+    <br/>
+
+    <label for="songYear">Year of release:</label>
+    <input type="text" id="songYear" th:field="*{song.songYear}" pattern="^(19|20)\d{2}$" required/>
+    <br/>
+
+    <button type="submit">Save Changes</button>
+    <a th:href="@{/web/songs}">Cancel</a>
+</form>
+
+
+</body>
+</html>

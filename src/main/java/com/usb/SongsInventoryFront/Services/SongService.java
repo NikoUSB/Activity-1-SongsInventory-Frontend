@@ -23,7 +23,7 @@ public class SongService {
         return ResponseEntity.ok(songs);
     }
 
-    public ResponseEntity<?> getSongById(UUID id) {
+    public ResponseEntity<?> getSongById(String id) {
         SongEntity song = songRepository.findById(id).orElse(null);
         if (song == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -60,7 +60,7 @@ public class SongService {
         }
     }
 
-    public ResponseEntity<?> updateSong(UUID id, SongEntity songToUpdate) {
+    public ResponseEntity<?> updateSong(String id, SongEntity songToUpdate) {
         Optional<SongEntity> song = songRepository.findById(id);
         if (song.isEmpty()) {
             return new ResponseEntity<>(Collections.singletonMap("Status", String.format("Song with ID %s not found.", id)), HttpStatus.NOT_FOUND);
@@ -76,7 +76,7 @@ public class SongService {
         return ResponseEntity.ok(Collections.singletonMap("Status", String.format("Updated Song with ID %s", existingSong.getId())));
     }
 
-    public ResponseEntity<?> deleteSong(UUID id) {
+    public ResponseEntity<?> deleteSong(String id) {
         Optional<SongEntity> song = songRepository.findById(id);
         if (song.isEmpty()) {
             return new ResponseEntity<>(Collections.singletonMap("Status", String.format("Song with ID %s doesn't exist.", id)),HttpStatus.NOT_FOUND);

@@ -1,10 +1,7 @@
 package com.usb.SongsInventoryFront.Entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -12,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import java.util.UUID;
 
 @Getter
@@ -25,7 +23,7 @@ public class SongEntity {
     @Column(name = "id", nullable = false, length = 36)
     @JsonProperty("id")
     @Setter
-    private UUID id;
+    private String id;
 
     @Setter
     @Column(name = "song_name", nullable = false, length = 255)
@@ -55,9 +53,16 @@ public class SongEntity {
     @Pattern(regexp = "^(15|20)\\d{2}$", message = "Year must be a valid 4-digit number (1500-2099)")
     private String songYear;
 
+    @PrePersist
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID().toString();  // Cambié de UUID a String
+        }
+    }
+
     @Override
     public String toString() {
-        return "PcGamesEntity{" +
+        return "SongEntity{" +
                 "id='" + id + '\'' +
                 ", gameName='" + songName + '\'' +
                 ", gameYear='" + songArtist + '\'' +

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>List of Songs</title>
+    <meta charset="UTF-8">
+    <style>
+        .active {
+            font-weight: bold;
+            color: red;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 10px;
+            padding: 0;
+        }
+        nav a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<h1>List of Songs</h1>
+
+<a th:href="@{/web/songs/new}">Add a new song</a>
+<br/><br/>
+
+<!-- Tabla -->
+<table border="1">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Artist</th>
+        <th>Album</th>
+        <th>Year</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="song : ${songs}">
+        <td th:text="${song.songName}">Name</td>
+        <td th:text="${song.songArtist}">Artist</td>
+        <td th:text="${song.songAlbum}">Album</td>
+        <td th:text="${song.songYear}">Year</td>
+        <td>
+            <a th:href="@{/web/songs/update/{id}(id=${song.id})}">Edit</a> |
+            <a th:href="@{/web/songs/delete/{id}(id=${song.id})}" onclick="return confirm('¿Delete song?')">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Paginación -->
+<br/>
+<div>
+    <span th:text="'Page ' + (${currentPage} + 1) + ' of ' + ${totalPages}"></span>
+
+    <nav>
+        <ul>
+            <li th:if="${currentPage > 0}">
+                <a th:href="@{|/web/songs?page=${currentPage - 1}&size=${5}|}">← Prev</a>
+            </li>
+
+            <li th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+                <a th:href="@{|/web/songs?page=${i}&size=${5}|}"
+                   th:text="${i + 1}"
+                   th:classappend="${i == currentPage} ? 'active' : ''">1</a>
+            </li>
+
+            <li th:if="${currentPage < totalPages - 1}">
+                <a th:href="@{|/web/songs?page=${currentPage + 1}&size=${5}|}">Next →</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<br/>
+<a th:href="@{/}">Go back to home</a>
+</body>
+</html>
