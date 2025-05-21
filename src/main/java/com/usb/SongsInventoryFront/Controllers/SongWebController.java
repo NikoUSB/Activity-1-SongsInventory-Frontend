@@ -2,6 +2,7 @@ package com.usb.SongsInventoryFront.Controllers;
 
 import com.usb.SongsInventoryFront.Entities.SongEntity;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,9 @@ import java.util.*;
 @RequestMapping("/web/songs")
 public class SongWebController {
 
-    private final String backendUrl = "https://activity-1-songsinventory-backend-production.up.railway.app/api/v1/songs";
+    @Value("${app.url}")
+    private String appUrl;
+    private final String backendUrl = appUrl+"/api/v1/songs";
     private final RestTemplate restTemplate = new RestTemplate();
 
     @GetMapping
