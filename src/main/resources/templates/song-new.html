@@ -2,6 +2,83 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>New Song</title>
+    <style>
+        /* Estilo para el encabezado */
+        header {
+            background-color: #4a90e2;
+            padding: 20px 0;
+            text-align: center;
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+
+        /* Contenedor del formulario */
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Etiquetas y campos */
+        form label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        form input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        /* Botones */
+        .form-actions {
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .form-actions button {
+            padding: 10px 20px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .form-actions button:hover {
+            background-color: #357ac9;
+        }
+
+        .form-actions a {
+            text-decoration: none;
+            color: #4a90e2;
+            font-weight: bold;
+        }
+
+        .form-actions a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 <h1>Add a new song</h1>

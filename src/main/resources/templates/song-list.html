@@ -4,25 +4,111 @@
     <title>List of Songs</title>
     <meta charset="UTF-8">
     <style>
+        /* Estilo para navegación de paginación */
         .active {
             font-weight: bold;
-            color: red;
+            color: white;
+            background-color: #4a90e2;
+            padding: 6px 10px;
+            border-radius: 4px;
         }
+
         nav ul {
             list-style: none;
             display: flex;
-            gap: 10px;
+            gap: 8px;
             padding: 0;
+            justify-content: center;
+            margin-top: 20px;
         }
+
         nav a {
             text-decoration: none;
+            color: #4a90e2;
+            font-weight: 500;
+            padding: 6px 10px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
         }
+
+        nav a:hover {
+            background-color: #dfefff;
+        }
+
+        /* Tabla moderna */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background-color: #4a90e2;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 15px;
+        }
+
+        tr:hover {
+            background-color: #f5faff;
+        }
+
+        a {
+            color: #4a90e2;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f4f8;
+            padding: 30px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        /* Botón de agregar canción */
+        a.add-button {
+            display: inline-block;
+            margin-bottom: 15px;
+            background-color: #4a90e2;
+            color: white;
+            padding: 10px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        a.add-button:hover {
+            background-color: #3a7bd5;
+        }
+
     </style>
+
 </head>
 <body>
 <h1>List of Songs</h1>
 
-<a th:href="@{/web/songs/new}">Add a new song</a>
+<a class="add-button" th:href="@{/web/songs/new}">Add a new song</a>
 <br/><br/>
 
 <!-- Tabla -->
@@ -75,6 +161,6 @@
 </div>
 
 <br/>
-<a th:href="@{/}">Go back to home</a>
+<a class="add-button" th:href="@{/}">Go back to home</a>
 </body>
 </html>
