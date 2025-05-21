@@ -1,6 +1,7 @@
 package com.usb.SongsInventoryFront.Controllers;
 
 import com.usb.SongsInventoryFront.Entities.SongEntity;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -62,9 +63,7 @@ public class SongWebController {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        // Generar el ID como String
-        song.setId(UUID.randomUUID().toString());
-
+        // No establecer el ID manualmente si lo hace el backend
         HttpEntity<SongEntity> request = new HttpEntity<>(song, headers);
         restTemplate.postForEntity(backendUrl, request, SongEntity.class);
 
@@ -74,9 +73,7 @@ public class SongWebController {
     @GetMapping("/update/{id}")
     public String showEditForm(@PathVariable String id, Model model) {
         ResponseEntity<Map> response = restTemplate.getForEntity(backendUrl + "/" + id, Map.class);
-        Map<String, Object> responseBody = response.getBody();
-
-        LinkedHashMap<String, Object> songMap = (LinkedHashMap<String, Object>) responseBody.get("Song");
+        Map<String, Object> songMap = response.getBody(); // Ya no accedemos a "Song"
 
         SongEntity song = new SongEntity();
         song.setId((String) songMap.get("id"));
@@ -88,6 +85,7 @@ public class SongWebController {
         model.addAttribute("song", song);
         return "song-update";
     }
+
 
 
     @PostMapping("/update/{id}")
